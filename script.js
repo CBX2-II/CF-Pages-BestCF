@@ -923,7 +923,7 @@ async function importCfDomains() {
 	const original = els.domainImportBtn.innerHTML;
 	els.domainImportBtn.textContent = "导入中";
 	try {
-		const response = await fetchWithTimeout(`cf_domains.txt?_t=${Date.now()}`, { method: "GET", timeout: 20000 });
+		const response = await fetchWithTimeout(`/CF-Pages-BestCF/cf_domains.txt?_t=${Date.now()}`, { method: "GET", timeout: 20000 });
 		if (!response.ok) throw new Error(`HTTP ${response.status}`);
 		const text = await response.text();
 		const lines = text.split(/\r\n|\r|\n/).map(cleanInputLine).filter(Boolean);
